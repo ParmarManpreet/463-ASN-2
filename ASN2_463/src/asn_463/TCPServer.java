@@ -6,7 +6,7 @@ import java.io.*;
 
 public class TCPServer {
 	
-	private Frame1 pushF1=new Frame1();
+	private static Frame1 pushF1=new Frame1();
 
 	public void Server() {
 		
@@ -49,8 +49,8 @@ public class TCPServer {
 	
 	public static void main(String[] args) {
 		
-		Frame1 f1=new Frame1();
-		f1.displayFrame();
+		//Frame1 f1=new Frame1();
+		pushF1.displayFrame();
 		TCPServer runServer= new TCPServer();
 		runServer.Server();
 
