@@ -33,7 +33,7 @@ public class Frame1 extends JFrame{// Extends all windows features
 	}
 	public void writeinBox(String input) {
 		box.append(input);
-		add(button);
+		//add(button);
 		
 	}
 	
