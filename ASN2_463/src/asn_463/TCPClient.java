@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 
 public class TCPClient extends TCPServer{
-
+private static Frame2 pushF2=new Frame2();
 
 	public void Client() {
 		
@@ -27,12 +27,12 @@ public class TCPClient extends TCPServer{
 		outputToServer.writeBytes(sentence);
 		
 		
-		//reads messagefrom server
+		//reads message from server
 		BufferedReader inputFromServer = new BufferedReader
 				(new InputStreamReader(clientSocket.getInputStream()));
 		
 		String recSentence = inputFromServer.readLine();
-		
+		pushF2.writeinBox(recSentence);
 		System.out.println("from server: "+ recSentence);
 		
 		
@@ -45,8 +45,8 @@ public class TCPClient extends TCPServer{
 	
 	public static void main(String[] args) {
 		
-		Frame2 f2=new Frame2();
-		f2.displayFrame2();
+		
+		pushF2.displayFrame2();
 		
 	
 		

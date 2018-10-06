@@ -6,7 +6,7 @@ import java.io.*;
 
 public class TCPServer {
 	
-	private Frame1 pushF1=new Frame1();
+	private static Frame1 pushF1=new Frame1();
 
 	public void Server() {
 		
@@ -33,7 +33,7 @@ public class TCPServer {
 				DataOutputStream(connectionSocket.getOutputStream());
 		
 		//use \n bc we use readline before and it looks for new line character
-		String sentence= "sup it's fisher what up, copy" + connectionSocket.getLocalAddress()+ '\n';
+		String sentence= "From Server: Connected..." +'\n';
 		
 		outputToClient.writeBytes("from server" + sentence);
 
@@ -49,8 +49,8 @@ public class TCPServer {
 	
 	public static void main(String[] args) {
 		
-		Frame1 f1=new Frame1();
-		f1.displayFrame();
+	
+		pushF1.displayFrame();
 		TCPServer runServer= new TCPServer();
 		runServer.Server();
 

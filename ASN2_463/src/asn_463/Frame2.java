@@ -13,9 +13,10 @@ import java.awt.event.ActionEvent;
 
 public class Frame2 extends JFrame{
 	
-	private JLabel connectLabel= new JLabel();
+	private JLabel connectLabel2= new JLabel();
 	private JTextArea box= new JTextArea(5,20);
 	private JButton button= new JButton("Connect");
+	//private JButton button2= new JButton("Disconnect");
 	private Frame1 f1= new Frame1();
 	private TCPClient runClient = new TCPClient();
 	//Constructor
@@ -25,27 +26,33 @@ public class Frame2 extends JFrame{
 		//types of layout you can use: FlowLayout, GridLayout ...
 		setLayout(new FlowLayout()); //gives default layout
 		defaultConnection();
-		getConnect();
+		clickConnect();
 
+	}
+	
+	public void writeinBox(String input) {
+		box.append(input+"\n");
 	}
 	
 	private void defaultConnection() {
 		
-		connectLabel.setText("Connection Status: Not Connected");
-		connectLabel.setForeground(Color.RED);
+		connectLabel2.setText("Connection Status: Not Connected");
+		connectLabel2.setForeground(Color.RED);
 		
 	}
-
-	public void getConnect() {
+	
+	public void clickConnect() {
 		
 	button.addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			connectLabel.setText("Connection Status: Connected");
-			connectLabel.setForeground(Color.BLUE);
-			button.setVisible(false);
+			checkConnection();
+			//setConnection("Connected");
+			//connectLabel.setText("Connection Status: Connected");
+			//connectLabel.setForeground(Color.BLUE);
+			//button.setVisible(false);;
 			//TCPClient runClient = new TCPClient();
 			runClient.Client();
 			//outputAns.setText(firstField.getText()+" "+ "x" + secondField.getText()+" "+"= " + multiplication());			
@@ -55,23 +62,41 @@ public class Frame2 extends JFrame{
 	
 	}
 	
+	public void checkConnection() {
+		
+		if (button.getText().equals("Connect")) {
+			button.setText("Disconnect");
+			connectLabel2= new JLabel("Connection Status: Connected" );
+			connectLabel2.setForeground(Color.RED);
+			//setConnection("Connected");
+		
+		}else {
+			button.setText("Connect");
+			connectLabel2= new JLabel("Connection Status: Not Connected" );
+			connectLabel2.setForeground(Color.BLUE);
+			//setConnection("Not Connected");
+
+		}
+	}
+	
 	public void setConnection(String connect) {
 		
 		if(connect.equals("Not Connected")) {
-			connectLabel= new JLabel("Connection Status: "+ connect );
-			connectLabel.setForeground(Color.RED);
+			connectLabel2= new JLabel("Connection Status: "+ connect );
+			connectLabel2.setForeground(Color.RED);
+		
 			
 		}else {
-			connectLabel= new JLabel("Connection Status: "+ connect );
-			connectLabel.setForeground(Color.BLUE);
-			
+			connectLabel2= new JLabel("Connection Status: "+ connect );
+			connectLabel2.setForeground(Color.BLUE);
+		
 		}
 		
 	}
 	
 	public void displayFrame2() {
 		
-		add(connectLabel);
+		add(connectLabel2);
 		add(box);
 		add(button);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
