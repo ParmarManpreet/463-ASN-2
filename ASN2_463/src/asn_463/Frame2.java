@@ -6,28 +6,53 @@ import java.awt.FlowLayout;//imports basic layout so we don't have to create one
 import javax.swing.JButton;
 import javax.swing.JFrame;// gives you basic features of windows (title bar, maximize, minimize...)
 import javax.swing.JLabel;//lets you output text and images
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;//ways for user to do something ex press enter
 import java.awt.event.ActionEvent;
 
 public class Frame2 extends JFrame{
 	
-	private JLabel connectLabel;
-	private JTextField box;
-	private JButton button;
-	
-	
+	private JLabel connectLabel= new JLabel();
+	private JTextArea box= new JTextArea(5,20);
+	private JButton button= new JButton("Connect");
+	private Frame1 f1= new Frame1();
+	private TCPClient runClient = new TCPClient();
 	//Constructor
 	public Frame2() {
 		
 		super("Client TCP"); //gives title
 		//types of layout you can use: FlowLayout, GridLayout ...
 		setLayout(new FlowLayout()); //gives default layout
-		//connectLabel= new JLabel();
-		box= new JTextField(22);//make a text box
-		button= new JButton("Connect");
-	
+		defaultConnection();
+		getConnect();
 
+	}
+	
+	private void defaultConnection() {
+		
+		connectLabel.setText("Connection Status: Not Connected");
+		connectLabel.setForeground(Color.RED);
+		
+	}
+
+	public void getConnect() {
+		
+	button.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			connectLabel.setText("Connection Status: Connected");
+			connectLabel.setForeground(Color.BLUE);
+			button.setVisible(false);
+			//TCPClient runClient = new TCPClient();
+			runClient.Client();
+			//outputAns.setText(firstField.getText()+" "+ "x" + secondField.getText()+" "+"= " + multiplication());			
+		}
+
+	});
+	
 	}
 	
 	public void setConnection(String connect) {
@@ -42,7 +67,6 @@ public class Frame2 extends JFrame{
 			
 		}
 		
-		displayFrame2();
 	}
 	
 	public void displayFrame2() {

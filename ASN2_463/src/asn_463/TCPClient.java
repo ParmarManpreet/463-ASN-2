@@ -5,19 +5,12 @@ import java.io.*;
 
 public class TCPClient extends TCPServer{
 
-	public void getString(String s) {
+
+	public void Client() {
 		
-		Frame1 sConnection= new Frame1();
-		Frame2 cConnection= new Frame2();
-		sConnection.setConnection(s);
-		cConnection.setConnection(s);
-		
-	}
-	
-	public static void main(String[] args) throws Exception{
-		TCPClient client = new TCPClient();
 		
 		try {
+			
 		//ip address: 127.0.0.1 ---> loopback ip address
 		//^ when connecting to yourself
 		//when connecting to someone else you have to know their ip address//niro IP: 132.205.46.163
@@ -28,13 +21,10 @@ public class TCPClient extends TCPServer{
 				DataOutputStream(clientSocket.getOutputStream());
 		
 		//use \n bc we use readline and it looks for new line character
-		String sentence= "Connected"; // maybe add here "Connected" 
-		client.getString(sentence);
-		
-//	+"  client port #  " + clientSocket.getLocalPort()
-//+ "   client ip address  " + clientSocket.getLocalAddress() + '\n';
-		
-//outputToServer.writeBytes("from client " + sentence);
+		String sentence=  "Connection Request: Socket[addr=" + clientSocket.getLocalAddress() + ",port=" + clientSocket.getPort() + ",localport=" + clientSocket.getLocalPort() + "]\n";
+	
+	
+		outputToServer.writeBytes(sentence);
 		
 		
 		//reads messagefrom server
@@ -51,5 +41,14 @@ public class TCPClient extends TCPServer{
 	}catch(Exception ex) {
 		
 	}
+	}
+	
+	public static void main(String[] args) {
+		
+		Frame2 f2=new Frame2();
+		f2.displayFrame2();
+		
+	
+		
 }
 }
