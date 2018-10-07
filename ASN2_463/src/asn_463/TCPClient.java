@@ -32,7 +32,7 @@ private static Frame2 pushF2=new Frame2();
 				(new InputStreamReader(clientSocket.getInputStream()));
 		
 		String recSentence = inputFromServer.readLine();
-		pushF2.writeinBox(recSentence);
+		pushF2.writeinBox2(recSentence);
 		System.out.println("from server: "+ recSentence);
 		
 		

@@ -16,8 +16,10 @@ import java.awt.event.ActionEvent;
 
 public class Frame1 extends JFrame{// Extends all windows features
 	
+
+	
 	private JLabel connectLabel=new JLabel();
-	private JTextArea box= new JTextArea(5,20);
+	private JTextArea box1= new JTextArea(5,20);
 	
 	//private TCPServer cool=new TCPServer();
 	
@@ -31,15 +33,27 @@ public class Frame1 extends JFrame{// Extends all windows features
 		defaultConnection();
 		
 	}
-	public void writeinBox(String input) {
-		box.append(input + '\n');
+	
+	
+	public void wtv() {
+		
+		//if(f2.button.getText().equals("Connect")) {
+			//connectLabel.setText("Connection Status: Connected" );
+			//connectLabel.setForeground(Color.BLUE);
+		//}
 	}
+	public void writeinBox(String input) {
+	
+		box1.append(input + '\n');
+	
+		}
 	
 	public void defaultConnection() {
 		
 		connectLabel.setText("Connection Status: Not Connected");
 		connectLabel.setForeground(Color.RED);
 	}
+	
 
 	//Method checks what connection status it is and outputs it with its designated color
 	public void setConnection(String connect) {
@@ -62,7 +76,7 @@ public class Frame1 extends JFrame{// Extends all windows features
 	public void displayFrame() {
 		
 		add(connectLabel);
-		add(box);
+		add(box1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(275,180);
 		setVisible(true);

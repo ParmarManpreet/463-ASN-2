@@ -35,7 +35,7 @@ public class TCPServer {
 		//use \n bc we use readline before and it looks for new line character
 		String sentence= "From Server: Connected..." +'\n';
 		
-		outputToClient.writeBytes("from server" + sentence);
+		outputToClient.writeBytes(sentence);
 
 		
 	}

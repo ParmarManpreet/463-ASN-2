@@ -15,7 +15,7 @@ public class Frame2 extends JFrame{
 	
 	private JLabel connectLabel2= new JLabel();
 	private JTextArea box= new JTextArea(5,20);
-	private JButton button= new JButton("Connect");
+	public JButton button= new JButton("Connect");
 	//private JButton button2= new JButton("Disconnect");
 	private Frame1 f1= new Frame1();
 	private TCPClient runClient = new TCPClient();
@@ -30,8 +30,10 @@ public class Frame2 extends JFrame{
 
 	}
 	
-	public void writeinBox(String input) {
+	public void writeinBox2(String input) {
+		
 		box.append(input+"\n");
+	
 	}
 	
 	private void defaultConnection() {
@@ -49,12 +51,7 @@ public class Frame2 extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			
 			checkConnection();
-			//setConnection("Connected");
-			//connectLabel.setText("Connection Status: Connected");
-			//connectLabel.setForeground(Color.BLUE);
-			//button.setVisible(false);;
-			//TCPClient runClient = new TCPClient();
-			runClient.Client();
+			//runClient.Client();
 			//outputAns.setText(firstField.getText()+" "+ "x" + secondField.getText()+" "+"= " + multiplication());			
 		}
 
@@ -66,15 +63,19 @@ public class Frame2 extends JFrame{
 		
 		if (button.getText().equals("Connect")) {
 			button.setText("Disconnect");
-			connectLabel2= new JLabel("Connection Status: Connected" );
-			connectLabel2.setForeground(Color.RED);
-			//setConnection("Connected");
+			connectLabel2.setText("Connection Status: Connected" );
+			connectLabel2.setForeground(Color.BLUE);
+			
+			runClient.Client();//setConnection("Connected");
 		
 		}else {
 			button.setText("Connect");
-			connectLabel2= new JLabel("Connection Status: Not Connected" );
-			connectLabel2.setForeground(Color.BLUE);
+			connectLabel2.setText("Connection Status: Not Connected" );
+			connectLabel2.setForeground(Color.RED);
+			box.setText(null);
+			//i wanna send something
 			//setConnection("Not Connected");
+			
 
 		}
 	}
